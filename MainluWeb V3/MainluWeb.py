@@ -5,7 +5,7 @@ class MainluWeb(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainluWeb, self).__init__()
         self.setWindowTitle("MainluWeb V3")
-        self.setWindowIcon(QtGui.QIcon("mainlu.ico"))
+        self.setWindowIcon(QtGui.QIcon("MainluWeb V3/ico.ico"))
         
         self.web = QtWebEngineWidgets.QWebEngineView()
         self.web.setGeometry(0, 0, self.width(), self.height())
