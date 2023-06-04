@@ -7,7 +7,7 @@ class MainluWeb(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainluWeb, self).__init__()
         #Establecer la ventana principal
-        self.setWindowTitle("MainluWeb V3")
+        self.setWindowTitle("MainluWeb-Python V1 - AlSoftP")
         #Icono de la ventana principal
         self.setWindowIcon(QtGui.QIcon("MainluWeb V3/ico.ico"))
         #Establecer la ventana principal en modo maximizado por defecto
