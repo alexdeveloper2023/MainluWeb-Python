@@ -26,7 +26,7 @@ class MainluWeb(QtWidgets.QMainWindow):
         #Agregar el objeto QWebEngineView al contenedor de la ventana principal
         self.setCentralWidget(self.web)
         
-        #Activar el modo full screen
+        #Activar el modo full screen, pero la venatana aún se muestra
         self.web.settings().setAttribute(QtWebEngineWidgets.QWebEngineSettings.WebAttribute.FullScreenSupportEnabled, True)
         self.web.page().fullScreenRequested.connect(lambda request: request.accept())
             
