@@ -29,7 +29,8 @@ class MainluWeb(QtWidgets.QMainWindow):
         #Activar el modo full screen
         self.web.settings().setAttribute(QtWebEngineWidgets.QWebEngineSettings.WebAttribute.FullScreenSupportEnabled, True)
         self.web.page().fullScreenRequested.connect(lambda request: request.accept())
-        
+            
+             
         #Crear el menú de navegación
         menubar = QtWidgets.QMenuBar(self)
         
@@ -85,6 +86,7 @@ class MainluWeb(QtWidgets.QMainWindow):
         self.setMenuBar(menubar)
         self.addToolBar(toolbar)
         
+    #Función para buscar con el botón, lo malo es que al volver a presionar vuelve a buscar con la url
     def setUrlBySearch(self):
         self.web.load(QtCore.QUrl("https://www.google.com/search?q=" + self.url.text()))
     
@@ -96,7 +98,7 @@ class MainluWeb(QtWidgets.QMainWindow):
     def changeUrl(self, q):
         self.url.setText(q.toString())
     
-    #Función para buscar con la palabra, lo malo es que al volver a presionar la tecla Enter vuelve a buscar
+    #Función para buscar con la palabra, lo malo es que al volver a presionar la tecla Enter vuelve a buscar con la url
     def setUrlBySearch(self):
         self.web.load(QtCore.QUrl("https://www.google.com/search?q=" + self.url.text()))
         
