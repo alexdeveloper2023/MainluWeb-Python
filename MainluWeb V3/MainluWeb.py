@@ -13,16 +13,20 @@ class MainluWeb(QtWidgets.QMainWindow):
         self.setCentralWidget(self.web)
         self.web.settings().setAttribute(QtWebEngineWidgets.QWebEngineSettings.WebAttribute.FullScreenSupportEnabled, True)
         self.web.page().fullScreenRequested.connect(lambda request: request.accept())
-
-    def toggleFullScreen(self, request):
-        if request.toggleOn():
-            self.setWindowState(Qt.WindowFullScreen)
-            request.accept()
-        else:
-            self.setWindowState(Qt.WindowNoState)
-            request.accept()
-
         
+        #Making a menu bar
+        menubar = self.menuBar()
+        fileMenu = menubar.addMenu("Archivo")
+        fileMenu.addAction("Salir", self.close)
+        
+        #Apply plugin's name
+        pluginsMenu = menubar.addMenu("Extensiones")
+        pluginsMenu.addAction("Test Plugin", self.testPlugin)
+        
+    def testPlugin(self):
+        #Showing a message box
+        QtWidgets.QMessageBox.information(self, "Test Plugin", "Test de Plugin")
+            
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = MainluWeb()
