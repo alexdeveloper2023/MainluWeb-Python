@@ -22,6 +22,7 @@ class MainluWeb(QtWidgets.QMainWindow):
         #Cargar la página web por defecto en el objeto QWebEngineView
         self.web.load(QtCore.QUrl("https://www.google.com"))
         
+        
         #Agregar el objeto QWebEngineView al contenedor de la ventana principal
         self.setCentralWidget(self.web)
         
@@ -38,13 +39,24 @@ class MainluWeb(QtWidgets.QMainWindow):
         #Crear un campo de texto para la barra de herramientas
         self.url = QtWidgets.QLineEdit(self)
         
+        #Crear un botón de buscar para la barra de herramientas
+        self.search = QtWidgets.QPushButton(self)
+        
+        #Establecer el texto al boton
+        self.search.setText("Buscar")
+        
+        #Añadir la función de buscar al boton de buscar
+        self.search.clicked.connect(self.setUrlBySearch)        
+        
+        #Añadir el botón de buscar a la barra de herramientas
+        toolbar.addWidget(self.search) 
+        
         #No poder mover la barra de herramientas y hacerlo invisble
         toolbar.setMovable(False)
         toolbar.toggleViewAction().setVisible(False)
         
         #Establecer en el campo de texto un texto que luego se borra al escribir en el campo de texto
         self.url.setPlaceholderText("Buscar...")
-        
         
         #Establecer en el campo de texto la url de la página
         self.url.setText("https://www.google.com")
@@ -73,6 +85,9 @@ class MainluWeb(QtWidgets.QMainWindow):
         self.setMenuBar(menubar)
         self.addToolBar(toolbar)
         
+    def setUrlBySearch(self):
+        self.web.load(QtCore.QUrl("https://www.google.com/search?q=" + self.url.text()))
+    
     #Función para mostrar un mensaje
     def testPlugin(self):
         QtWidgets.QMessageBox.information(self, "Test Plugin", "Test de Plugin")
